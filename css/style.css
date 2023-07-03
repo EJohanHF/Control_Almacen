@@ -1,0 +1,13 @@
+.btn-warning {
+    color: #ffffff;
+    background-color: #f8ac59;
+    border-color: #f8ac59;
+}
+
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning.focus {
+  color: #ffffff;
+  background-color: #f7a54a;
+  border-color: #f7a54a;
+}
