@@ -11,12 +11,18 @@ class Sign_In_UpModelController
     }
 }
 
-if (isset($_POST['method'])) {
+if (isset($_POST['method']) || isset($_GET['method'])) {
     $Sign_In_UpModelController = new Sign_In_UpModelController();
-    $method = $_POST['method'];
-    $DataUser = $_POST['DataUser'];
+    $method = "";
+    if(isset($_POST['method'])){
+        $method = $_POST['method'];
+    }else{
+        $method = $_GET['method'];
+    }
+    
     switch ($method) {
         case 'SignIn':
+            $DataUser = $_POST['DataUser'];
             $IDemployee = $Sign_In_UpModelController->SignIn($DataUser);
             $redirect = "";
             if ($IDemployee != "" && !is_null($IDemployee) && $IDemployee != 0) {
@@ -30,10 +36,12 @@ if (isset($_POST['method'])) {
             }
             echo $redirect;
 
-
             break;
         case 'SignUp':
-            # code...
+            session_start();
+            session_destroy();
+             header("Location:" .$redirect= config::PATH);
+            die();
             break;
         default:
             echo "Error No existe El metodo";

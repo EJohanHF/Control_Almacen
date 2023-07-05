@@ -1,6 +1,13 @@
+<?php 
+    session_start();
+    if(isset($_SESSION["IDemployee"])){
+       header('Location: /control_almacen/view/Employee/EmployeesList.php');
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
