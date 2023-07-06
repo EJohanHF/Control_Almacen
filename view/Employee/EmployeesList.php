@@ -1,13 +1,11 @@
 <?php 
 session_start();
-if (isset($_SESSION['IDemployee'])) {
-
-    echo $_SESSION['IDemployee'];
-
-}else{
+if (!isset($_SESSION['IDemployee'])) {
     session_destroy();
+    header("Location:http://localhost/control_almacen");
     die();
 }
+
 
 ?>
 
@@ -83,7 +81,7 @@ $NumberRecordPaginate = 0;
 
 </div>
 <div class="float-end">
-    <a href="<?php echo config::PATH . "view/Employee/EmployeesCreate.php" ?>" class="btn btn-primary" title="Nuevo"> Nuevo </a>
+    <a href="<?php ?>" class="btn btn-primary" title="Nuevo"> Nuevo </a>
 </div>
-<script src="<?php echo config::PATH . "js/employee/EmployeeController.js" ?>"></script>
+
 <?php require dirname(__DIR__, 1) . "/layout/footer.php"; ?>

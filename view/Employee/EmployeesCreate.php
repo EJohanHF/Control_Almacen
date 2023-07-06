@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (!isset($_SESSION['IDemployee'])) {
+    session_destroy();
+    header("Location:http://localhost/control_almacen");
+    die();
+}
+
 //require dirname(__DIR__, 2) . "/Config/util.php";
 require dirname(__DIR__, 1) . "/layout/header.php";
 require dirname(__DIR__, 2) . "/controller/Employee/EmployeeController.php";
@@ -32,9 +39,9 @@ require dirname(__DIR__, 2) . "/controller/Employee/EmployeeController.php";
                                     <div class="mb-2 row">
 
                                         <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm" title="Fecha Nacimiento">Fec. Nacimiento (*)</label>
-                                        <div class="col-sm-8">  
-                                        <input class="form-control" id="Fecha_Nacimiento" name="Fecha_Nacimiento" required type="date" >
-                                       
+                                        <div class="col-sm-8">
+                                            <input class="form-control" id="Fecha_Nacimiento" name="Fecha_Nacimiento" required type="date">
+
                                         </div>
                                     </div>
                                     <div class="mb-2 row">

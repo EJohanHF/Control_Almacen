@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (!isset($_SESSION['IDemployee'])) {
+    session_destroy();
+    header("Location:http://localhost/control_almacen");
+    die();
+}
+
 require dirname(__DIR__, 1) . "/layout/header.php";
 require dirname(__DIR__, 2) . '/controller/Employee/EmployeeController.php';
 require dirname(__DIR__, 2) . '/controller/User/UserController.php';

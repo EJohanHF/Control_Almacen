@@ -11,3 +11,14 @@
   background-color: #f7a54a;
   border-color: #f7a54a;
 }
+
+.bg-warning {
+  --bs-bg-opacity: 1;
+  background-color: #f8ac59!important;
+}
+
+.bg-success {
+  --bs-bg-opacity: 1;
+  background-color: #1ab394!important;
+}
+
