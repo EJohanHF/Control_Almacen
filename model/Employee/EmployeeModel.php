@@ -11,7 +11,8 @@ class EmployeeModel extends DataBaseMethod
     function EmployeeList($id)
     {
 
-        $query = "SELECT * FROM empleados";
+        $query = "SELECT id, Nombres, Apellidos, Fecha_Nacimiento, Direccion, Email, Telefono, Persona_contacto,
+        estado FROM empleados";
 
 
         
@@ -72,7 +73,7 @@ class EmployeeModel extends DataBaseMethod
 
     function EmployeeDelete($id)
     {
-        $query = "DELETE FROM empleados WHERE id = $id";
+        $query = "UPDATE empleados SET estado = 0 WHERE id = $id"; //"DELETE FROM empleados WHERE id = $id";
 
         return $this->BDDelete($query);
         
