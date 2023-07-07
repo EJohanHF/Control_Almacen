@@ -44,40 +44,5 @@ require dirname(__DIR__, 1) . "/layout/header.php";
 <div class="float-end">
     <a href="<?php echo config::PATH . "view/Employee/EmployeesCreate.php" ?>" class="btn btn-primary" title="Nuevo"> Nuevo </a>
 </div>
-
-
-
-<script src="<?php echo config::PATH . "js/employee/EmployeeController.js" ?>"></script>
+<script src="<?php echo config::PATH . "js/product/product.js" ?>"></script>
 <?php require dirname(__DIR__, 1) . "/layout/footer.php"; ?>
-
-<script>
-    const busqueda = document.querySelector('#busqueda');
-    busqueda.addEventListener('keyup', () => {
-
-        ProductListTable(busqueda.value, 0);
-    })
-
-    const ProductListTable = (busqueda, page) => {
-
-        $.ajax({
-            data: {
-                busqueda: busqueda,
-                page: page
-            },
-            method: "POST",
-            url: "./PartialView/ProductListTable.php",
-
-            success: (data) => {
-                document.getElementById("ProductListTable").innerHTML = data;
-
-            }
-
-
-        })
-
-    }
-
-    window.addEventListener('load', () => {
-        ProductListTable("", 0);
-    });
-</script>

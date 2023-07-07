@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__DIR__, 2) . '/Config/Connection.php';
+//require_once dirname(__DIR__, 2) . '/Config/Connection.php';
 
 
 class UseModel extends DataBaseMethod {

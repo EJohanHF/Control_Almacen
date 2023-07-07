@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__DIR__, 2) . '/Config/Connection.php';
+ require dirname(__DIR__, 2) . '/Config/Connection.php';
 
 class ProductModel extends DataBaseMethod
 {

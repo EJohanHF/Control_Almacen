@@ -15,7 +15,7 @@ $NumberRecordPaginate = 0;
 $ActiveClass = 0;
 $NumberRecord = 10;
 
-isset($_POST['page']) ? $NumberRecordPaginate = $ActiveClass = $_POST['page']   : $NumberRecordPaginate  = 0 ;
+isset($_POST['page']) ? $NumberRecordPaginate = $ActiveClass = $_POST['page']   : $NumberRecordPaginate  = 0;
 
 
 
@@ -31,7 +31,7 @@ $NumberRecordPaginate = 0;
             <th scope="col">Precio</th>
             <th scope="col">Stock</th>
             <th scope="col">Estado</th>
-            <th scope="col">Marca</th>
+
             <th scope="col">Accion</th>
         </tr>
     </thead>
@@ -65,9 +65,10 @@ $NumberRecordPaginate = 0;
 
 
                 </td>
-                <td scope="row"><?php echo $data["mrc_id"]; ?></td>
+
 
                 <td>
+                    <button onclick="AddProductToCart();" type="button" class="btn btn-w-m btn-info_local" title="Agregar Carrito"><i class="fa-solid fa-cart-shopping"></i></button>
                     <a href="" type="button" class="btn btn-warning" title="Editar"><i class="fa-solid fa-pen-to-square"></i></i></i></a>
                     <button onclick="" type="button" class="btn btn-danger" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
                 </td>
@@ -88,6 +89,6 @@ $NumberRecordPaginate = 0;
     for ($i = 1; $i <= $PaginateCount; $i++) {
         $parmtPrevious = ($i == 1 ? $NumberRecordPaginate : $NumberRecordPaginate +=  10)
     ?>
-        <li onclick="ProductListTable(document.getElementById('busqueda')? document.getElementById('busqueda').value : '',<?php echo $parmtPrevious; ?>);" class="page-item"><a class="page-link <?php echo  $parmtPrevious == $ActiveClass ? 'active' : '' ?>" ><?php echo $i; ?></a></li>
+        <li onclick="ProductListTable(document.getElementById('busqueda')? document.getElementById('busqueda').value : '',<?php echo $parmtPrevious; ?>);" class="page-item"><a class="page-link <?php echo  $parmtPrevious == $ActiveClass ? 'active' : '' ?>"><?php echo $i; ?></a></li>
     <?php } ?>
 </ul>

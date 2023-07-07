@@ -70,6 +70,7 @@
 </html>
 <script>
     const SignIn = () => {
+        debugger;
         const FrmLogin = Object.fromEntries(
             new FormData(
                 document.querySelector("#FrmLogin")
@@ -88,7 +89,7 @@
                 if ($.trim(data) === "" || data === 0 || data === null) {
                     alert('Usario / Clave Incorrecto');
                 } else {
-
+                    console.log(data);
                     document.location.href = $.trim(data);
                 }
 

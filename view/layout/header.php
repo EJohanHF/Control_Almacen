@@ -1,6 +1,10 @@
-<?php require dirname(__DIR__, 2) . "/Config/util.php"; ?>
+<?php
+require dirname(__DIR__, 2) . '/Config/Connection.php';
+require dirname(__DIR__, 2) . "/Config/util.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,7 +55,7 @@
                 <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"></path>
             </symbol>
             <symbol id="SingUp" viewBox="0 0 16 16">
-            <path d="M24,25v3H8V4H24V7h2V3a1,1,0,0,0-1-1H7A1,1,0,0,0,6,3V29a1,1,0,0,0,1,1H25a1,1,0,0,0,1-1V25Z"/>
+                <path d="M24,25v3H8V4H24V7h2V3a1,1,0,0,0-1-1H7A1,1,0,0,0,6,3V29a1,1,0,0,0,1,1H25a1,1,0,0,0,1-1V25Z" />
             </symbol>
         </svg>
         <header>
@@ -64,6 +68,23 @@
                         </a>
 
                         <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                            <li>
+                                <div class="list-inline-item mt-1 me-3">
+
+                                    <a class="text-muted position-relative  " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" href="#offcanvasExample" role="button" aria-controls="offcanvasRight">
+                                        <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                                            1
+                                        </span>
+                                    </a>
+
+                                </div>
+                                <!-- <a  data-bs-toggle="offcanvas" href="#modalShoppingCart">
+                                    <span data-cart-items="2">
+                                    <i class="fa-solid fa-right-to-bracket mt-4 fa-xl" style="color: #ffffff;"></i>
+                                    </span>
+                                </a> -->
+                            </li>
                             <li>
                                 <a href="#" class="nav-link text-secondary">
                                     <svg class="bi d-block mx-auto mb-1" width="24" height="24">
@@ -81,7 +102,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link text-white">
+                                <a href="<?php echo config::PATH . "view/Order/OrderGenerate.php" ?>" class="nav-link text-white">
                                     <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                                         <use xlink:href="#table"></use>
                                     </svg>
@@ -89,7 +110,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo config::PATH."view/Product/ProductListview.php"?>" class="nav-link text-white">
+                                <a href="<?php echo config::PATH . "view/Product/ProductListview.php" ?>" class="nav-link text-white">
                                     <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                                         <use xlink:href="#grid"></use>
                                     </svg>
@@ -97,22 +118,36 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo config::PATH."view/Employee/EmployeesList.php"?>" class="nav-link text-white">
+                                <a href="<?php echo config::PATH . "view/Employee/EmployeesList.php" ?>" class="nav-link text-white">
                                     <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                                         <use xlink:href="#people-circle"></use>
                                     </svg>
                                     Empleados
                                 </a>
                             </li>
+
                             <li>
-                                <a href="<?php echo config::PATH."controller/Sign_In_Up/Sign_In_UpModelController.php?method=SignUp"?>">
-                                <i class="fa-solid fa-right-to-bracket mt-4 fa-xl" style="color: #ffffff;" ></i>
-                                  
-                                </a>
+                                <div class="position-relative">
+                                    <a href="<?php echo config::PATH . "controller/Sign_In_Up/Sign_In_UpModelController.php?method=SignUp" ?>">
+                                        <i class="fa-solid fa-right-to-bracket fa-2xl " style="color: #ffffff; margin-top: 2rem;"></i>
+
+                                    </a>
+                                </div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </header>
+        <?php require  dirname(__DIR__, 2) . '/view/Order/PartialView/OrderGenerate.php'; ?>
         <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+
+
+
+            
+
+
+            <!-- 
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" aria-modal="true" role="dialog">
+  
+</div> -->
