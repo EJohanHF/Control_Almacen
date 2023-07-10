@@ -1,5 +1,5 @@
 <?php
-//require dirname(__DIR__, 2) . '/Config/Connection.php';
+require dirname(__DIR__, 2) . '/Config/Connection.php';
 
 
 // $Conect = Connection();
@@ -52,28 +52,29 @@ class EmployeeModel extends DataBaseMethod
     }
 
 
-    function EmployeeEdit($ID, $Nombres, $Apellidos, $Fecha_Nacimiento, $Direccion, $Email, $Telefono, $Persona_contacto)
+    function EmployeeEdit($ID, $Nombres, $Apellidos, $Fecha_Nacimiento, $Direccion, $Email, $Telefono, $Persona_contacto,$Estado)
     {
-
+        $LEstado = filter_var($Estado, FILTER_VALIDATE_BOOLEAN)? 1 : 0;
         $query =  "UPDATE empleados
         SET
             
             Nombres='$Nombres',
             Apellidos='$Apellidos',
-            Fecha_Nacimiento='2023-06-26',
+            Fecha_Nacimiento='$Fecha_Nacimiento',
             Direccion='$Direccion',
             Email='$Email',
             Telefono='$Telefono',
-            Persona_contacto='$Persona_contacto'
+            Persona_contacto='$Persona_contacto',
+            estado = $LEstado
         WHERE id=$ID ";
 
         return $this->BDUpdate($query);
 
     }
 
-    function EmployeeDelete($id)
+    function EmployeeDelete($id,$estado)
     {
-        $query = "UPDATE empleados SET estado = 0 WHERE id = $id"; //"DELETE FROM empleados WHERE id = $id";
+        $query = "UPDATE empleados SET estado = $estado WHERE id = $id"; //"DELETE FROM empleados WHERE id = $id";
 
         return $this->BDDelete($query);
         

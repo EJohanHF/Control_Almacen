@@ -90,8 +90,28 @@ $UserList = $UserController->UserList($IDEmployee);
                                             <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm" title="Persona de Contacto">Pers. contacto (*)</label>
                                             <div class="col-sm-8">
                                                 <input type="text" value="<?php echo $employee["Persona_contacto"]; ?>" class="form-control form-control-sm" id="Persona_contacto" name="Persona_contacto" required>
+                                                
 
                                             </div>
+                                        </div>
+                                        <div class="form-check">
+
+                                            <?php
+
+                                            $class = "warning";
+                                            $text = "Inactivo";
+                                            $checked = "";
+                                            if ($employee["estado"]) {
+                                                $class = "success";
+                                                $text = "Activo";
+                                                $checked = "checked";
+                                            }
+
+                                            ?>
+                                            <input class="form-check-input" type="checkbox" value="" id="chkemplestado" name="chkemplestado"  <?php echo $checked ?>>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                <span class="badge bg-<?php echo $class; ?> chktext"><?php echo  $text; ?></span>
+                                            </label>
                                         </div>
                                     <?php } ?>
                                     <button class="btn btn-w-m btn-warning float-end btnEditar" type="submit">
@@ -100,8 +120,8 @@ $UserList = $UserController->UserList($IDEmployee);
                                 </form>
 
 
-                                <button class="btn btn-w-m btn-danger float-end me-1 btnDelete" type="button">
-                                    <i class="fa-solid fa-trash me-2"></i>Eliminar</button>
+                                <!-- <button class="btn btn-w-m btn-danger float-end me-1 btnDelete" type="button">
+                                    <i class="fa-solid fa-trash me-2"></i>Eliminar</button> -->
                             </div>
                         </div>
                     </div>

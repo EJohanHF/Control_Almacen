@@ -13,6 +13,8 @@ require dirname(__DIR__, 1) . "/layout/header.php";
 
 ?>
 
+
+
 <div class="card shadow-none border border-300 mb-3">
 
     <div class="card-body p-0">
@@ -26,6 +28,7 @@ require dirname(__DIR__, 1) . "/layout/header.php";
                 </div>
                 <div class="col-auto">
                     <input id="busqueda" class="form-control search-input search form-control-sm" type="search" placeholder="Search" aria-label="Search">
+                    
                 </div>
 
             </div>
@@ -39,10 +42,17 @@ require dirname(__DIR__, 1) . "/layout/header.php";
 
         </div>
     </div>
-
+    
 </div>
 <div class="float-end">
     <a href="<?php echo config::PATH . "view/Employee/EmployeesCreate.php" ?>" class="btn btn-primary" title="Nuevo"> Nuevo </a>
 </div>
-<script src="<?php echo config::PATH . "js/product/product.js" ?>"></script>
+
 <?php require dirname(__DIR__, 1) . "/layout/footer.php"; ?>
+
+
+
+<script  src="<?php echo config::PATH . "js/product/product.js" ?>">
+
+</script>
+

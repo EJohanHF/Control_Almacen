@@ -1,5 +1,3 @@
-
-
 const EmployeeCreate = () => {
   debugger;
   const FrmCreateEmployeeObj = Object.fromEntries(
@@ -36,55 +34,62 @@ const EmployeeCreate = () => {
     },
   });
 };
+
+if (document.querySelector("#chkemplestado")) {
+  document.querySelector("#chkemplestado").addEventListener("click", (e) => {
+    let chktext = document.querySelector(".chktext");
+
+    if (e.target.checked) {
+      chktext.classList.remove("bg-warning");
+      chktext.classList.add("bg-success");
+      chktext.innerText = "Activo";
+    } else {
+      chktext.classList.remove("bg-success");
+      chktext.classList.add("bg-warning");
+      chktext.innerText = "Inactivo";
+    }
+  });
+}
 const EmployeeEdit = () => {
   debugger;
   const FrmEditEmployee = Object.fromEntries(
-      new FormData(
-          document.querySelector("#FrmEditEmployee")
-      )
+    new FormData(document.querySelector("#FrmEditEmployee"))
   );
-  debugger
+  FrmEditEmployee.Estado = document.getElementById("chkemplestado").checked;
   $.ajax({
-      data: {
-          method: 'EmployeeEdit',
-          data: 
-              FrmEditEmployee
-              // ID,
-              // Nombres,
-              // Apellidos,
-              // Fecha_Nacimiento,
-              // Direccion,
-              // Email,
-              // Telefono,
-              // Persona_contacto
-          
-      },
-      url: 'http://localhost/control_almacen/controller/employee/EmployeeController.php',
-      type: 'POST',
+    data: {
+      method: "EmployeeEdit",
+      data: FrmEditEmployee,
+      // ID,
+      // Nombres,
+      // Apellidos,
+      // Fecha_Nacimiento,
+      // Direccion,
+      // Email,
+      // Telefono,
+      // Persona_contacto
+    },
+    url: "http://localhost/control_almacen/controller/employee/EmployeeController.php",
+    type: "POST",
 
-      success: function(state) {
-          stateval = $.trim(state);
-          stateval === "success" ?
-              swalInfo(
-                  "Empleado se Actualizo",
-                  "",
-                  stateval,
-                  ""
-              ) :
-              swalInfo(
-                  "Error al Actualizar Empleado",
-                  stateval.substr(5),
-                  stateval.substr(0, 5),
-                  ""
-              );
-      },
-      error: function(state) {
-          swalInfo("Error", "Cominiquese con el proveedor", "error", "");
-      }
+    success: function (state) {
+      stateval = $.trim(state);
+
+      stateval === "success"
+        ? swalInfo("Empleado se Actualizo", "", stateval, "")
+        : swalInfo(
+            "Error al Actualizar Empleado",
+            stateval.substr(5),
+            stateval.substr(0, 5),
+            ""
+          );
+    },
+    error: function (state) {
+      swalInfo("Error", "Cominiquese con el proveedor", "error", "");
+    },
   });
-
-}
-const EmployeeDelete = (ID) => {
+};
+const EmployeeDelete = (ID, Estado) => {
   swal({
     title: "¿Estás seguro?",
     text: "Desea eliminar el empleado",
@@ -96,7 +101,7 @@ const EmployeeDelete = (ID) => {
       $.ajax({
         data: {
           method: "EmployeeDelete",
-          data: { ID },
+          data: { ID, Estado },
         },
         url: basePahtjs + "controller/employee/EmployeeController.php",
         type: "POST",
@@ -126,12 +131,9 @@ const EmployeeDelete = (ID) => {
 };
 
 const BtnDelete = document.querySelector(".btnDelete");
-if (BtnDelete){
-BtnDelete.addEventListener("click",()=>{
-  const IDEmployee = document.getElementById("IDEmployee").value;
-  EmployeeDelete(IDEmployee);
-})
+if (BtnDelete) {
+  BtnDelete.addEventListener("click", () => {
+    const IDEmployee = document.getElementById("IDEmployee").value;
+    EmployeeDelete(IDEmployee);
+  });
 }
-
-
-

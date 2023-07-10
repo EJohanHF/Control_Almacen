@@ -15,15 +15,15 @@ class EmployeeController
         $EmployeeModel = new EmployeeModel();
         return $EmployeeModel->EmployeeCreate($Nombres, $Apellidos, $Fecha_Nacimiento, $Direccion, $Email, $Telefono, $Persona_contacto);
     }
-    function EmployeeEdit($ID, $Nombres, $Apellidos, $Fecha_Nacimiento, $Direccion, $Email, $Telefono, $Persona_contacto)
+    function EmployeeEdit($ID, $Nombres, $Apellidos, $Fecha_Nacimiento, $Direccion, $Email, $Telefono, $Persona_contacto,$Estado)
     {
         $EmployeeModel = new EmployeeModel();
-        return $EmployeeModel->EmployeeEdit($ID, $Nombres, $Apellidos, $Fecha_Nacimiento, $Direccion, $Email, $Telefono, $Persona_contacto);
+        return $EmployeeModel->EmployeeEdit($ID, $Nombres, $Apellidos, $Fecha_Nacimiento, $Direccion, $Email, $Telefono, $Persona_contacto,$Estado);
     }
-    function EmployeeDelete($ID)
+    function EmployeeDelete($ID,$Estado)
     {
         $EmployeeModel = new EmployeeModel();
-        return $EmployeeModel->EmployeeDelete($ID);
+        return $EmployeeModel->EmployeeDelete($ID,$Estado);
     }
 }
 
@@ -55,14 +55,17 @@ if (isset($_POST['method']) && !empty($_POST['method'])) {
                 'Direccion' => $Direccion,
                 'Email' => $Email,
                 'Telefono' => $Telefono,
-                'Persona_contacto' => $Persona_contacto
+                'Persona_contacto' => $Persona_contacto,
+                'Estado' => $Estado
             ) = $_POST['data'];
-            echo ($EmployeeController->EmployeeEdit($IDEmployee, $Nombres, $Apellidos, $Fecha_Nacimiento, $Direccion, $Email, $Telefono, $Persona_contacto));
+            
+            echo ($EmployeeController->EmployeeEdit($IDEmployee, $Nombres, $Apellidos, $Fecha_Nacimiento, $Direccion, $Email, $Telefono, $Persona_contacto,$Estado));
             break;
         case 'EmployeeDelete':
             list(
-                'ID' => $ID) = $_POST['data'];
-            echo ($EmployeeController->EmployeeDelete($ID));
+                'ID' => $ID,
+                'Estado' => $Estado) = $_POST['data'];
+            echo ($EmployeeController->EmployeeDelete($ID,$Estado));
             break;
         default:
             echo 'ERROR Metodo No Encontrado '.$method;

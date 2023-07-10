@@ -75,7 +75,9 @@ $NumberRecordPaginate = 0;
                             </td>
                             <td>
                                 <a href="<?php echo config::PATH . "view/Employee/EmployeesEdit.php?IDEmployee=" . $Employee["id"];; ?>" type="button" class="btn btn-warning" title="Editar"><i class="fa-solid fa-pen-to-square"></i></i></i></a>
-                                <button onclick="EmployeeDelete(<?php echo $Employee['id']; ?>);" type="button" class="btn btn-danger" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
+                                <?php if ($Employee["estado"]) { ?>
+                                    <button onclick="EmployeeDelete(<?php echo $Employee['id'] . ',' . 0; ?>);" type="button" class="btn btn-danger" title="Dar Baja"><i class="fa-solid fa-user-xmark"></i></button>
+                                <?php } ?>
                             </td>
                         </tr>
                     <?php  } ?>
@@ -97,5 +99,6 @@ $NumberRecordPaginate = 0;
 <div class="float-end">
     <a href="<?php ?>" class="btn btn-primary" title="Nuevo"> Nuevo </a>
 </div>
+<script src="<?php echo config::PATH . "js/employee/EmployeeController.js" ?>"></script>
 
 <?php require dirname(__DIR__, 1) . "/layout/footer.php"; ?>

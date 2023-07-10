@@ -24,6 +24,7 @@ $productData = array_slice($product, $NumberRecordPaginate, $NumberRecord);
 
 $NumberRecordPaginate = 0;
 ?>
+
 <table class="table">
     <thead>
         <tr>
@@ -68,7 +69,14 @@ $NumberRecordPaginate = 0;
 
 
                 <td>
-                    <button onclick="AddProductToCart();" type="button" class="btn btn-w-m btn-info_local" title="Agregar Carrito"><i class="fa-solid fa-cart-shopping"></i></button>
+
+                    <?php
+                    if ($data["prod_estado"]) {
+                        $prod_nombre = str_replace("'", "\'", $data['prod_nombre'])
+                    ?>
+                        <!--onclick="AddProductToCart();"-->
+                        <button onclick="AddProductToCart(<?php echo $data['prod_id'] . ',' . $data['prod_precioventa'] . ',\'' .  $prod_nombre . '\''; ?>);" type="button" class="btn btn-w-m btn-info_local" title="Agregar Carrito"><i class="fa-solid fa-cart-shopping"></i></button>
+                    <?php } ?>
                     <a href="" type="button" class="btn btn-warning" title="Editar"><i class="fa-solid fa-pen-to-square"></i></i></i></a>
                     <button onclick="" type="button" class="btn btn-danger" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
                 </td>
@@ -80,9 +88,6 @@ $NumberRecordPaginate = 0;
 
     </tbody>
 </table>
-
-
-
 
 <ul class="pagination pagination-rounded mb-0 float-end pb-3">
     <?php

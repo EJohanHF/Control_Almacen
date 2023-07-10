@@ -1,5 +1,4 @@
 <?php
-require dirname(__DIR__, 2) . '/Config/Connection.php';
 require dirname(__DIR__, 2) . "/Config/util.php";
 ?>
 <!DOCTYPE html>
@@ -15,11 +14,14 @@ require dirname(__DIR__, 2) . "/Config/util.php";
     <link rel="stylesheet" href="/control_almacen/fontAwesome/fontawesomelight.css">
     <link rel="stylesheet" href="/control_almacen/fontAwesome/woff2.css">
     <link rel="stylesheet" href="/control_almacen/css/style.css">
+    <link rel="stylesheet" href="/control_almacen/css/select.css">
 
     <script src="/control_almacen/js/util/util.js"></script>
     <script src="/control_almacen/node_modules/sweetalert/dist/sweetalert.min.js"></script>
     <script src="/control_almacen/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/control_almacen/js/select.js"></script>
     <script src="/control_almacen/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    
     <title>SI - UniCenter</title>
 
 </head>
@@ -71,10 +73,10 @@ require dirname(__DIR__, 2) . "/Config/util.php";
                             <li>
                                 <div class="list-inline-item mt-1 me-3">
 
-                                    <a class="text-muted position-relative  " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" href="#offcanvasExample" role="button" aria-controls="offcanvasRight">
+                                    <a id="cartheader" class="text-muted position-relative  " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" href="#offcanvasExample" role="button" aria-controls="offcanvasRight">
                                         <i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-                                            1
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success" id="countprod">
+                                            0
                                         </span>
                                     </a>
 
