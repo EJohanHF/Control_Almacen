@@ -13,20 +13,13 @@
 <script>
     window.addEventListener('load', () => {
         document.getElementById('countprod').innerHTML = JSON.parse(localStorage.getItem('keyCart')).length;
-        
-   
-
-
     })
 
 
 
-    $(".select2_demo_1").select2({
-        dropdownParent: $('#offcanvasRight ')
-    });
 
 
-  
+
 </script>
 </body>
 

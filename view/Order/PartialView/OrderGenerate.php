@@ -11,7 +11,6 @@
    .select2-container {
       left: 0.5rem !important;
    }
-   
 </style>
 
 
@@ -23,17 +22,13 @@
          <h5>Orden del pedido</h5>
       </div>
       <div class=" ">
-      <Span class="mx-2 fw-semibold">Emplesa</Span>
-         <select class="select2_demo_1 form-control float-star" style="width: 95% ">
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="4">Option 4</option>
-            <option value="5">Option 5</option>
+         <Span class="mx-2 fw-semibold">Empresa</Span>
+         <select class="select2_demo_1 form-control float-star" id="OrdGnCostumer" style="width: 95% ">
+
          </select>
       </div>
       <span id="ordGnTotal" class="float-end me-3  fs-4  mt-4  fw-semibold"></span>
-      
+
 
       <div class="ibox-content">
          <div class="table-responsive ">
@@ -141,7 +136,7 @@
       document.getElementById('ordGnTotal').innerText = "Total: S/. " + Total.toFixed(2)
 
 
-      if (JSON.parse(localStorage.getItem(CartlocalKey))) {
+      if (JSON.parse(localStorage.getItem(CartlocalKeyheader))) {
          document.querySelectorAll("#carProdCantidad").forEach(element => {
             element.addEventListener("keyup", (event) => {
                let pordID = ((event.target).parentNode.parentNode.id);
@@ -178,6 +173,75 @@
       localStorage.setItem(CartlocalKeyheader, JSON.stringify(cart));
 
    }
+
+
+
+
+
+
+
+
+   if (localStorage.getItem('CostumerKey')) {
+
+      const CostumerGenKey = JSON.parse(localStorage.getItem('CostumerKey'));
+      const Seletedoption = `<option value="${CostumerGenKey.id}" selected="selected">${CostumerGenKey.text}</option>`;
+      const as = document.getElementById('OrdGnCostumer').innerHTML = Seletedoption;
+   }
+
+
+
+
+   $(".select2_demo_1").select2({
+      dropdownParent: $('#offcanvasRight '),
+
+      ajax: {
+         url: 'http://localhost/control_almacen/Controller/Customer/CustomerController.php',
+         type: 'POST',
+         data: function(params) {
+            var query = {
+               data: params.term != undefined ? params.term : "",
+               method: 'CostumerList'
+            }
+
+
+            console.log(query);
+            // Query parameters will be ?search=[term]&type=public
+            return query;
+         },
+
+
+         processResults: function(data) {
+
+            return {
+               results: JSON.parse(data)
+            };
+         }
+
+
+      }
+   });
+   const CostumerOrderKey = "CostumerKey";
+
+   var $eventSelect = $(".select2_demo_1");
+
+
+   $eventSelect.on("select2:select", function(e) {
+
+      localStorage.setItem(CostumerOrderKey, JSON.stringify({
+         id: e.params.data.id,
+         text: e.params.data.text
+      }));
+
+
+
+      console.log(JSON.stringify(e.params.data.id));
+   });
+
+
+
+
+
+   // $eventSelect.on("select2:unselect", function (e) { console.log("select2:unselect", e); });
 </script>
 <?php //require dirname(__DIR__, 1) . "/layout/footer.php"; 
 ?>

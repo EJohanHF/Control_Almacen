@@ -11,7 +11,7 @@ class Sign_In_UpModel extends DataBaseMethod
         $DataUser = $this->BDList($query);
         $IDemployee = "";
         foreach ($DataUser as $Data) {
-            $IDemployee = $Data["IDempleado"];
+            $IDemployee = $Data->IDempleado;
         }
         return $IDemployee;
     }

@@ -53,16 +53,16 @@ $NumberRecordPaginate = 0;
                     ?>
                         <tr>
 
-                            <th scope="row"><?php echo $Employee["id"]; ?></th>
-                            <td scope="row"><?php echo $Employee["Nombres"] . " " . $Employee["Apellidos"]; ?></td>
-                            <td scope="row"><?php echo $Employee["Direccion"]; ?></td>
-                            <td scope="row"><?php echo $Employee["Telefono"]; ?></td>
+                            <th scope="row"><?php echo $Employee->id; ?></th>
+                            <td scope="row"><?php echo $Employee->Nombres . " " . $Employee->Apellidos; ?></td>
+                            <td scope="row"><?php echo $Employee->Direccion; ?></td>
+                            <td scope="row"><?php echo $Employee->Telefono; ?></td>
                             <td scope="row">
                                 <?php
 
                                 $class = "warning";
                                 $text = "Deshabilitado";
-                                if ($Employee["estado"]) {
+                                if ($Employee->estado) {
                                     $class = "success";
                                     $text = "Habilitado";
                                 }
@@ -74,9 +74,9 @@ $NumberRecordPaginate = 0;
 
                             </td>
                             <td>
-                                <a href="<?php echo config::PATH . "view/Employee/EmployeesEdit.php?IDEmployee=" . $Employee["id"];; ?>" type="button" class="btn btn-warning" title="Editar"><i class="fa-solid fa-pen-to-square"></i></i></i></a>
-                                <?php if ($Employee["estado"]) { ?>
-                                    <button onclick="EmployeeDelete(<?php echo $Employee['id'] . ',' . 0; ?>);" type="button" class="btn btn-danger" title="Dar Baja"><i class="fa-solid fa-user-xmark"></i></button>
+                                <a href="<?php echo config::PATH . "view/Employee/EmployeesEdit.php?IDEmployee=" . $Employee->id; ?>" type="button" class="btn btn-warning" title="Editar"><i class="fa-solid fa-pen-to-square"></i></i></i></a>
+                                <?php if ($Employee->estado) { ?>
+                                    <button onclick="EmployeeDelete(<?php echo $Employee->id . ',' . 0; ?>);" type="button" class="btn btn-danger" title="Dar Baja"><i class="fa-solid fa-user-xmark"></i></button>
                                 <?php } ?>
                             </td>
                         </tr>

@@ -29,7 +29,7 @@ class DataBaseMethod
 
             $statement->execute();
 
-            return  $statement->fetchAll();
+            return  $statement->fetchAll(PDO::FETCH_OBJ);
         } catch (PDOException  $e) {
 
             return null;

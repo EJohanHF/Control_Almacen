@@ -45,51 +45,51 @@ $UserList = $UserController->UserList($IDEmployee);
                                     foreach ($EmployeeList as $employee) {
 
                                     ?>
-                                        <input type="hidden" value="<?php echo $employee["id"];  ?>" id="IDEmployee" name="IDEmployee">
+                                        <input type="hidden" value="<?php echo $employee->id;  ?>" id="IDEmployee" name="IDEmployee">
                                         <div class="mb-2 row">
                                             <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Nombres (*)</label>
                                             <div class="col-sm-8">
-                                                <input type="text" value="<?php echo $employee["Nombres"]; ?>" class="form-control form-control-sm" id="Nombres" name="Nombres" required>
+                                                <input type="text" value="<?php echo $employee->Nombres; ?>" class="form-control form-control-sm" id="Nombres" name="Nombres" required>
                                             </div>
                                         </div>
                                         <div class="mb-2 row">
                                             <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Apellidos (*)</label>
                                             <div class="col-sm-8">
-                                                <input type="text" value="<?php echo $employee["Apellidos"]; ?>" class="form-control form-control-sm" id="Apellidos" name="Apellidos" required>
+                                                <input type="text" value="<?php echo $employee->Apellidos; ?>" class="form-control form-control-sm" id="Apellidos" name="Apellidos" required>
                                             </div>
                                         </div>
                                         <div class="mb-2 row">
                                             <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm" title="Fecha Nacimiento">Fec. Nacimiento (*)</label>
                                             <div class="col-sm-8">
-                                                <input class="form-control" value="<?php echo $employee["Fecha_Nacimiento"]; ?>" id="Fecha_Nacimiento" name="Fecha_Nacimiento" required type="date">
+                                                <input class="form-control" value="<?php echo $employee->Fecha_Nacimiento; ?>" id="Fecha_Nacimiento" name="Fecha_Nacimiento" required type="date">
 
                                             </div>
                                         </div>
                                         <div class="mb-2 row">
                                             <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Dirección (*)</label>
                                             <div class="col-sm-8">
-                                                <input type="text" value="<?php echo $employee["Direccion"]; ?>" class="form-control form-control-sm" id="Direccion" name="Direccion" required>
+                                                <input type="text" value="<?php echo $employee->Direccion; ?>" class="form-control form-control-sm" id="Direccion" name="Direccion" required>
                                             </div>
                                         </div>
 
                                         <div class="mb-2 row">
                                             <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Email (*)</label>
                                             <div class="col-sm-8">
-                                                <input type="text" value="<?php echo $employee["Email"]; ?>" class="form-control form-control-sm" id="Email" name="Email" required>
+                                                <input type="text" value="<?php echo $employee->Email; ?>" class="form-control form-control-sm" id="Email" name="Email" required>
 
                                             </div>
                                         </div>
                                         <div class="mb-2 row">
                                             <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Teléfono (*)</label>
                                             <div class="col-sm-8">
-                                                <input type="text" value="<?php echo $employee["Telefono"]; ?>" class="form-control form-control-sm" id="Telefono" name="Telefono" required>
+                                                <input type="text" value="<?php echo $employee->Telefono; ?>" class="form-control form-control-sm" id="Telefono" name="Telefono" required>
 
                                             </div>
                                         </div>
                                         <div class="mb-2 row">
                                             <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm" title="Persona de Contacto">Pers. contacto (*)</label>
                                             <div class="col-sm-8">
-                                                <input type="text" value="<?php echo $employee["Persona_contacto"]; ?>" class="form-control form-control-sm" id="Persona_contacto" name="Persona_contacto" required>
+                                                <input type="text" value="<?php echo $employee->Persona_contacto; ?>" class="form-control form-control-sm" id="Persona_contacto" name="Persona_contacto" required>
                                                 
 
                                             </div>
@@ -101,7 +101,7 @@ $UserList = $UserController->UserList($IDEmployee);
                                             $class = "warning";
                                             $text = "Inactivo";
                                             $checked = "";
-                                            if ($employee["estado"]) {
+                                            if ($employee->estado) {
                                                 $class = "success";
                                                 $text = "Activo";
                                                 $checked = "checked";
@@ -147,8 +147,8 @@ $UserList = $UserController->UserList($IDEmployee);
 
                                             <?php foreach ($UserList as $user) {   ?>
                                                 <tr>
-                                                    <th scope="row"><?php echo $user["Usuario"]; ?></th>
-                                                    <th scope="row"><?php echo $user["Clave"]; ?></th>
+                                                    <th scope="row"><?php echo $user->Usuario; ?></th>
+                                                    <th scope="row"><?php echo $user->Clave; ?></th>
                                                     <th scope="col">
 
                                                         <button onclick="" type="button" class="btn btn-danger btnDeleteUser" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
@@ -187,23 +187,23 @@ $UserList = $UserController->UserList($IDEmployee);
 
                 <?php if (!is_null($UserList)  && count($UserList) != 0) { ?>
                     <form action="javascript:UserEdit();" id="FrmModalUser">
-                        <input type="hidden" value="<?php echo $employee["id"];  ?>" id="IDempleado" name="IDempleado">
+                        <input type="hidden" value="<?php echo $employee->id;  ?>" id="IDempleado" name="IDempleado">
 
                         <?php
 
                         foreach ($UserList as $user) {
                         ?>
-                            <input type="hidden" value="<?php echo $user["id"];  ?>" id="IdUser" name="IdUser">
+                            <input type="hidden" value="<?php echo $user->id;  ?>" id="IdUser" name="IdUser">
                             <div class="mb-2 row">
                                 <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Usuario (*)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" value="<?php echo $user["Usuario"]; ?>" class="form-control form-control-sm" id="Usuario" name="Usuario" required>
+                                    <input type="text" value="<?php echo $user->Usuario; ?>" class="form-control form-control-sm" id="Usuario" name="Usuario" required>
                                 </div>
                             </div>
                             <div class="mb-2 row">
                                 <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Clave (*)</label>
                                 <div class="col-sm-8">
-                                    <input type="password" value="<?php echo $user["Clave"]; ?>" class="form-control form-control-sm" id="Clave" name="Clave" required>
+                                    <input type="password" value="<?php echo $user->Clave; ?>" class="form-control form-control-sm" id="Clave" name="Clave" required>
                                 </div>
                             </div>
                         <?php
@@ -216,7 +216,7 @@ $UserList = $UserController->UserList($IDEmployee);
                 <?php } else { ?>
 
                     <form action="javascript:UserCreate();" id="FrmModalUser">
-                        <input type="hidden" value="<?php echo $employee["id"];  ?>" id="IDempleado" name="IDempleado">
+                        <input type="hidden" value="<?php echo $employee->id;  ?>" id="IDempleado" name="IDempleado">
                         <div class="mb-2 row">
                             <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Usuario (*)</label>
                             <div class="col-sm-8">

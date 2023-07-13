@@ -44,16 +44,16 @@ $NumberRecordPaginate = 0;
         ?>
             <tr>
 
-                <th scope="row"><?php echo $data["prod_nombre"]; ?></th>
-                <td scope="row"><?php echo $data["prod_precioventa"]; ?></td>
-                <td scope="row"><?php echo $data["prod_stock"]; ?></td>
+                <th scope="row"><?php echo $data->prod_nombre; ?></th>
+                <td scope="row"><?php echo $data->prod_precioventa; ?></td>
+                <td scope="row"><?php echo $data->prod_stock; ?></td>
                 <td scope="row">
 
                     <?php
 
                     $class = "warning";
                     $text = "Deshabilitado";
-                    if ($data["prod_estado"]) {
+                    if ($data->prod_estado) {
                         $class = "success";
                         $text = "Habilitado";
                     }
@@ -71,11 +71,11 @@ $NumberRecordPaginate = 0;
                 <td>
 
                     <?php
-                    if ($data["prod_estado"]) {
-                        $prod_nombre = str_replace("'", "\'", $data['prod_nombre'])
+                    if ($data->prod_estado) {
+                        $prod_nombre = str_replace("'", "\'", $data->prod_nombre)
                     ?>
                         <!--onclick="AddProductToCart();"-->
-                        <button onclick="AddProductToCart(<?php echo $data['prod_id'] . ',' . $data['prod_precioventa'] . ',\'' .  $prod_nombre . '\''; ?>);" type="button" class="btn btn-w-m btn-info_local" title="Agregar Carrito"><i class="fa-solid fa-cart-shopping"></i></button>
+                        <button onclick="AddProductToCart(<?php echo $data->prod_id . ',' . $data->prod_precioventa . ',\'' .  $prod_nombre . '\''; ?>);" type="button" class="btn btn-w-m btn-info_local" title="Agregar Carrito"><i class="fa-solid fa-cart-shopping"></i></button>
                     <?php } ?>
                     <a href="" type="button" class="btn btn-warning" title="Editar"><i class="fa-solid fa-pen-to-square"></i></i></i></a>
                     <button onclick="" type="button" class="btn btn-danger" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
