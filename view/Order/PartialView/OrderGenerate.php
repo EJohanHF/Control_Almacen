@@ -24,8 +24,8 @@
       <div class=" ">
          <Span class="mx-2 fw-semibold">Empresa</Span>
          <select class="select2_demo_1 form-control float-star" id="OrdGnCostumer" style="width: 95% ">
-
-         </select>
+         <!--List Dinamica-->
+         </select>   
       </div>
       <span id="ordGnTotal" class="float-end me-3  fs-4  mt-4  fw-semibold"></span>
 
@@ -174,13 +174,7 @@
 
    }
 
-
-
-
-
-
-
-
+//Select - Recuperar Empleado del Local Storage
    if (localStorage.getItem('CostumerKey')) {
 
       const CostumerGenKey = JSON.parse(localStorage.getItem('CostumerKey'));
@@ -188,9 +182,7 @@
       const as = document.getElementById('OrdGnCostumer').innerHTML = Seletedoption;
    }
 
-
-
-
+//Select - Solicitudes de extraccion de informacion mienstras Escibe
    $(".select2_demo_1").select2({
       dropdownParent: $('#offcanvasRight '),
 
@@ -220,11 +212,11 @@
 
       }
    });
+
+
    const CostumerOrderKey = "CostumerKey";
-
    var $eventSelect = $(".select2_demo_1");
-
-
+// Select Cada Vez que Seleciona un empleado de la lista se almacena en el local storage
    $eventSelect.on("select2:select", function(e) {
 
       localStorage.setItem(CostumerOrderKey, JSON.stringify({
