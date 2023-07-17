@@ -3,7 +3,7 @@ const EmployeeCreate = () => {
   const FrmCreateEmployeeObj = Object.fromEntries(
     new FormData(document.querySelector("#FrmCreateEmployee"))
   );
-  console.log(FrmCreateEmployeeObj);
+
   debugger;
   $.ajax({
     data: {

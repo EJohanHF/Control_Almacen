@@ -15,15 +15,14 @@ class EmployeeModel extends DataBaseMethod
         estado FROM empleados";
 
 
-        
+
 
         if (!is_null($id)) {
             $query = $query . " WHERE id = $id";
         }
-         
+
 
         return  $this->BDlist($query);
-
     }
 
     function EmployeeCreate($Nombres, $Apellidos, $Fecha_Nacimiento, $Direccion, $Email, $Telefono, $Persona_contacto)
@@ -48,13 +47,12 @@ class EmployeeModel extends DataBaseMethod
             '$Persona_contacto')";
 
         return $this->BDCreate($query);
-
     }
 
 
-    function EmployeeEdit($ID, $Nombres, $Apellidos, $Fecha_Nacimiento, $Direccion, $Email, $Telefono, $Persona_contacto,$Estado)
+    function EmployeeEdit($ID, $Nombres, $Apellidos, $Fecha_Nacimiento, $Direccion, $Email, $Telefono, $Persona_contacto, $Estado)
     {
-        $LEstado = filter_var($Estado, FILTER_VALIDATE_BOOLEAN)? 1 : 0;
+        $LEstado = filter_var($Estado, FILTER_VALIDATE_BOOLEAN) ? 1 : 0;
         $query =  "UPDATE empleados
         SET
             
@@ -69,15 +67,13 @@ class EmployeeModel extends DataBaseMethod
         WHERE id=$ID ";
 
         return $this->BDUpdate($query);
-
     }
 
-    function EmployeeDelete($id,$estado)
+    function EmployeeDelete($id, $estado)
     {
         $query = "UPDATE empleados SET estado = $estado WHERE id = $id"; //"DELETE FROM empleados WHERE id = $id";
 
         return $this->BDDelete($query);
-        
     }
 }
      // try {

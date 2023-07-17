@@ -12,7 +12,9 @@
 </div>
 <script>
     window.addEventListener('load', () => {
+        if(localStorage.getItem('keyCart')){
         document.getElementById('countprod').innerHTML = JSON.parse(localStorage.getItem('keyCart')).length;
+    }
     })
 
 
