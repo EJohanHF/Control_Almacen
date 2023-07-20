@@ -32,6 +32,7 @@ if (isset($_POST['method']) || isset($_GET['method'])) {
                 // header("Location:" .$redirect= config::PATH . "view/Employee/EmployeesList.php");
                 // exit();
             }else{
+                session_start();
                 session_destroy();
             }
             echo $redirect;

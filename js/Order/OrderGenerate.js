@@ -176,5 +176,6 @@ document.querySelector(".btnGnrPd").addEventListener("click", async () => {
     const state = await response.text();
     //Pendiente
     console.log(state);
+    OrderListTableLoad();
   }
 });

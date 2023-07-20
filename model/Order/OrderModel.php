@@ -9,6 +9,28 @@ class  OrderModel
         $this->cn = new DataBaseMethod();
     }
 
+    function OrderList($Search)
+    {
+        $query = "SELECT ord_id, clte_id, clte_nombre, ord_total, ord_estado , ord_fecha
+        FROM orden  WHERE (ord_id LIKE '$Search%')
+        OR (clte_nombre LIKE '%$Search%') ORDER BY ord_id desc";
+        return $this->cn->BDList($query);
+    }
+
+
+    function OrderBodyList($idOrder)
+    {
+        $query = "SELECT dt_id, ord_id, prod_id, dt_descripcion, dt_cantidad, dt_precioventa, dt_preciototal
+        FROM detalle_orden WHERE ord_id = $idOrder";
+        return $this->cn->BDList($query);
+    }
+
+    function OrderStateUpdate ($idOrder , $State) {
+        $query = "UPDATE orden SET ord_estado = $State WHERE ord_id = $idOrder";
+
+        return $this->cn->BDUpdate($query);
+    }
+
     function OrderGenerate($orderHeader, $orderBody)
     {
         $error = "error";
@@ -25,8 +47,8 @@ class  OrderModel
                 }
 
                 $queryOrderHeader = "INSERT INTO orden
-        (ord_id, clte_id, clte_nombre, ord_total, ord_estado)
-        VALUES (NULL, $dataOrderHeader->id, '" . str_replace("'", "\'", $dataOrderHeader->text,) . "',  $OrderHeaderTotal, 0)";
+        (ord_id, clte_id, clte_nombre, ord_total, ord_estado,ord_fecha)
+        VALUES (NULL, $dataOrderHeader->id, '" . str_replace("'", "\'", $dataOrderHeader->text,) . "',  $OrderHeaderTotal, 1 , DATE(NOW()))";
                 $OrderHearder_ID = $this->cn->BDCreateLastInsertID($queryOrderHeader);
 
                 if (is_numeric($OrderHearder_ID) && $OrderHearder_ID != "" && $OrderHearder_ID != "0" && $OrderHearder_ID != 0) {
@@ -58,4 +80,7 @@ class  OrderModel
         }
         return $error;
     }
+
+
+
 }

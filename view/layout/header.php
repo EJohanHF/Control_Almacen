@@ -104,7 +104,7 @@ require dirname(__DIR__, 2) . "/Config/util.php";
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo config::PATH . "view/Order/OrderGenerate.php" ?>" class="nav-link text-white">
+                                <a href="<?php echo config::PATH . "view/Order/OrderListView.php" ?>" class="nav-link text-white">
                                     <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                                         <use xlink:href="#table"></use>
                                     </svg>

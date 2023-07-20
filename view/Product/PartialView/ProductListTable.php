@@ -77,8 +77,8 @@ $NumberRecordPaginate = 0;
                         <!--onclick="AddProductToCart();"-->
                         <button onclick="AddProductToCart(<?php echo $data->prod_id . ',' . $data->prod_precioventa . ',\'' .  $prod_nombre . '\''; ?>);" type="button" class="btn btn-w-m btn-info_local" title="Agregar Carrito"><i class="fa-solid fa-cart-shopping"></i></button>
                     <?php } ?>
-                    <a href="" type="button" class="btn btn-warning" title="Editar"><i class="fa-solid fa-pen-to-square"></i></i></i></a>
-                    <button onclick="" type="button" class="btn btn-danger" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
+                    <!--<a href="" type="button" class="btn btn-warning" title="Editar"><i class="fa-solid fa-pen-to-square"></i></i></i></a>
+                    <button onclick="" type="button" class="btn btn-danger" title="Eliminar"><i class="fa-solid fa-trash"></i></button>-->
                 </td>
             </tr>
         <?php

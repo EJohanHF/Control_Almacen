@@ -13,10 +13,29 @@ class OrderController
     {
         return $this->OrderModel->OrderGenerate($orderHeader, $orderBody);
     }
+
+    function OrderList($search)
+    {
+
+        return $this->OrderModel->OrderList($search);
+    }
+
+    function OrderBodyList($idOrder)
+    {
+
+        return $this->OrderModel->OrderBodyList($idOrder);
+    }
+
+    function OrderStateUpdate($idOrder, $State)
+    {
+
+
+        return $this->OrderModel->OrderStateUpdate($idOrder, $State);
+    }
 }
 
-
-if (json_decode(file_get_contents("php://input"), true)) {
+$Post = json_decode(file_get_contents("php://input"), true);
+if (isset($Post['method'])) {
     $OrderController = new OrderController();
     $Post = json_decode(file_get_contents("php://input"), true);
     switch ($Post['method']) {
@@ -24,9 +43,20 @@ if (json_decode(file_get_contents("php://input"), true)) {
             // $data =  (OBJECT)$Post['orderHeader'];
             // var_dump($data->id);
             // var_dump($Post['orderBody']);
-            var_dump( $OrderController->OrderGenerate($Post['orderHeader'], $Post['orderBody']));
+            var_dump($OrderController->OrderGenerate($Post['orderHeader'], $Post['orderBody']));
             break;
 
+        case 'OrderBodyList':
+
+            print_r(json_encode($OrderController->OrderBodyList($Post['idOrder'])));
+            break;
+
+
+        case 'OrderStateUpdate':
+
+
+            print_r($OrderController->OrderStateUpdate($Post['idOrder'], $Post['State']));
+            break;
         default:
 
             break;

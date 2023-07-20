@@ -1,6 +1,5 @@
 const basePahtjs = "http://localhost/control_almacen/";
 const swalInfo = (title,text,icon, url) => {
-    debugger
         swal({
             title: title,
             text: text,
