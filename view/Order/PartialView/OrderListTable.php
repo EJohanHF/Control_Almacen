@@ -52,7 +52,7 @@ $StarOrdenPage = 0
 
                 <td scope="row"><?php print_r($Data->ord_id) ?></td>
                 <td scope="row" style="width: 20rem;"><?php print_r($Data->clte_nombre) ?></td>
-                <td scope="row"><?php print_r($Data->ord_total) ?></td>
+                <td scope="row">S/.<?php print_r($Data->ord_total) ?></td>
                 <td scope="row"><?php print_r($Data->ord_fecha) ?></td>
                 <td scope="row">
 
@@ -111,6 +111,6 @@ $StarOrdenPage = 0
     for ($i = 1; $i <= $TotalPage; $i++) {
         $StarOrdenPageNext = ($i == 1 ? $StarOrdenPage : $StarOrdenPage +=  10)
     ?>
-        <li onclick="OrderListTableLoad(document.querySelector('#SearchOrder').value,<?php print_r($StarOrdenPageNext); ?> );" class="page-item"><a class="page-link <?php echo  $StarOrdenPageNext == $ActiveClass ? 'active' : '' ?>"><?php echo $i; ?></a></li>
+        <li  LCPage="<?php print_r($StarOrdenPageNext); ?>" onclick="OrderListTableLoad(document.querySelector('#SearchOrder').value,<?php print_r($StarOrdenPageNext); ?> );" class="page-item"><a class="page-link <?php echo  $StarOrdenPageNext == $ActiveClass ? 'active' : '' ?>"><?php echo $i; ?></a></li>
     <?php } ?>
 </ul>

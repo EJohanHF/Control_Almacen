@@ -3,23 +3,19 @@ const PathOrderListTable =
 const PathOrderController =
   "http://localhost/control_almacen/controller/Order/OrderController.php";
 
+document.querySelector("#SearchOrder").addEventListener("keyup", (e) => {
+  OrderListTableLoad(e.target.value, 0);
+});
 
-  document.querySelector("#SearchOrder").addEventListener("keyup", (e) => {
-    OrderListTableLoad(e.target.value, 0);
-  });
-  
-
-
-
-const OrderListTableLoad = async (SearchOrder,Page) => {
+const OrderListTableLoad = async (SearchOrder, Page) => {
   try {
     const SearchOrder1 = document.querySelector("#SearchOrder").value;
-    const tableLoad = await fetch(PathOrderListTable , {
-      method:"POST",
-      body:JSON.stringify({
-        Page : Page,
+    const tableLoad = await fetch(PathOrderListTable, {
+      method: "POST",
+      body: JSON.stringify({
+        Page: Page,
         SearchOrder: SearchOrder,
-      })
+      }),
     });
     const response = await tableLoad.text();
     document.querySelector("#OrderListTable").innerHTML = response;
@@ -58,7 +54,7 @@ const OrderListTableLoad = async (SearchOrder,Page) => {
     document.querySelectorAll("#OrderDispatch").forEach((btn) => {
       btn.addEventListener("click", async (e) => {
         try {
-          console.log(e.target.parentNode.parentNode.id);
+          //console.log(e.target.parentNode.parentNode.id);
           const request = await fetch(PathOrderController, {
             method: "POST",
             body: JSON.stringify({
@@ -68,8 +64,15 @@ const OrderListTableLoad = async (SearchOrder,Page) => {
             }),
           });
           const response = await request.text();
+
+          debugger;
+
+          const Page =
+            document.querySelector(".page-link.active").parentNode.attributes
+              .LCPage.value;
+
           response.trim() == "success"
-            ? (OrderListTableLoad(SearchOrder1,0),
+            ? (OrderListTableLoad(SearchOrder1, Page),
               swalInfo("Pedido Despachado", "", response.trim(), ""))
             : console.log(
                 response.trim(),
@@ -91,7 +94,7 @@ const OrderListTableLoad = async (SearchOrder,Page) => {
       btn.addEventListener("click", (e) => {
         swal({
           title: "¿Estás seguro?",
-          text: "Desea eliminar el empleado",
+          text: "Desea Cancelar Pedido",
           icon: "warning",
           buttons: true,
           dangerMode: true,
@@ -108,9 +111,11 @@ const OrderListTableLoad = async (SearchOrder,Page) => {
               });
 
               const response = await request.text();
-
+              const Page =
+                document.querySelector(".page-link.active").parentNode
+                  .attributes.LCPage.value;
               response.trim() == "success"
-                ? (OrderListTableLoad(SearchOrder1,0),
+                ? (OrderListTableLoad(SearchOrder1, Page),
                   swalInfo("Pedido Cancelado", "", response.trim(), ""))
                 : console.log(
                     response.trim(),

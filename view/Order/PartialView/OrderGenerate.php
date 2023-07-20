@@ -16,6 +16,23 @@
 
 <div class="offcanvas offcanvas-end overflow-auto" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" aria-modal="true" role="dialog">
 
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+
+    <i class=" fa-solid fa-circle-exclamation rounded me-2"></i>
+      <strong class="me-auto">Rellenar los Campos</strong>
+      <small></small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Verificar el pedido tenga un Cliente y almenos un producto.
+    </div>
+  </div>
+</div>
+
+
+
    <div class="ibox">
       <div class="ibox-title">
          <span class="float-end">(<strong>1</strong>) Productos</span>
@@ -69,9 +86,6 @@
 
    </div>
 </div>
-
-
-
 
 
 

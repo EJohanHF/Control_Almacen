@@ -14,6 +14,9 @@
     window.addEventListener('load', () => {
         if(localStorage.getItem('keyCart')){
         document.getElementById('countprod').innerHTML = JSON.parse(localStorage.getItem('keyCart')).length;
+        document.querySelector(".btnGnrPd").removeAttribute("disabled");
+    }else{
+         document.querySelector(".btnGnrPd").setAttribute("disabled", "disabled");
     }
     })
 

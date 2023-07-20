@@ -43,7 +43,7 @@ if (isset($Post['method'])) {
             // $data =  (OBJECT)$Post['orderHeader'];
             // var_dump($data->id);
             // var_dump($Post['orderBody']);
-            var_dump($OrderController->OrderGenerate($Post['orderHeader'], $Post['orderBody']));
+            print_r($OrderController->OrderGenerate($Post['orderHeader'], $Post['orderBody']));
             break;
 
         case 'OrderBodyList':

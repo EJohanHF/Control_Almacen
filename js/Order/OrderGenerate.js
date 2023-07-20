@@ -1,5 +1,6 @@
 const CartlocalKeyheader = "keyCart";
 const cartheader = document.querySelector("#cartheader");
+const CostumerOrderKey = "CostumerKey";
 
 cartheader.addEventListener("click", () => {
   LoadDataCart();
@@ -13,11 +14,12 @@ const DeleteProductToCart = (idProduct) => {
   switch (cart.length) {
     case 0:
       localStorage.removeItem(CartlocalKeyheader);
+      document.querySelector(".btnGnrPd").setAttribute("disabled", "disabled");
       break;
 
     default:
       localStorage.setItem(CartlocalKeyheader, JSON.stringify(cart));
-
+      document.querySelector(".btnGnrPd").remove("disabled");
       break;
   }
   LoadDataCart();
@@ -62,6 +64,10 @@ const LoadDataCart = () => {
       countprod += 1;
       Total += product.cantidad * product.precio;
     });
+
+    document.querySelector(".btnGnrPd").removeAttribute("disabled");
+  } else {
+    document.querySelector(".btnGnrPd").setAttribute("disabled", "disabled");
   }
 
   const cartdata = document.querySelector("#cartdata");
@@ -102,8 +108,6 @@ const productCantidad = (id, cantidad) => {
 
   localStorage.setItem(CartlocalKeyheader, JSON.stringify(cart));
 };
-
-const CostumerOrderKey = "CostumerKey";
 
 //Select - Recuperar Empleado del Local Storage
 if (localStorage.getItem(CostumerOrderKey)) {
@@ -175,7 +179,32 @@ document.querySelector(".btnGnrPd").addEventListener("click", async () => {
     );
     const state = await response.text();
     //Pendiente
-    console.log(state);
-    OrderListTableLoad();
+    debugger;
+    state.trim() == "success"
+      ? (localStorage.removeItem(CostumerOrderKey),
+        localStorage.removeItem(CartlocalKeyheader),
+        swalInfo(
+          "Pedido Generado",
+          "",
+          state.trim(),
+          "http://localhost/control_almacen/view/Order/OrderListView.php"
+        ))
+      : swalInfo(
+          "Error al generar pedido",
+          state.trim().substr(5),
+          state.trim().substr(0, 5),
+          ""
+        );
+    LoadDataCart();
+    // if (OrderListTableLoad()) {
+    //   OrderListTableLoad();
+    // }
+  } else {
+    var toastLiveExample = document.getElementById("liveToast");
+
+    var toast = new bootstrap.Toast(toastLiveExample);
+
+    toast.show();
+    document.querySelector("#OrdGnCostumer").selectedIndex = -1;
   }
 });

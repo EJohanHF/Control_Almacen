@@ -6,7 +6,7 @@
     <div class="card-body p-0">
 
         <div class="p-3 code-to-copy">
-            <p class="fs-2 fw-bold">Lista de Productos</p>
+            <p class="fs-2 fw-bold">Lista de Pedidos</p>
 
             <div class="row g-3 align-items-center float-end mb-3">
                 <div class="col-auto">

@@ -139,7 +139,7 @@ $UserList = $UserController->UserList($IDEmployee);
                                         <thead>
                                             <tr>
                                                 <th scope="col">Usuario</th>
-                                                <th scope="col">Clave</th>
+                                                <!-- <th scope="col">Clave</th> -->
                                                 <th scope="col">Accion</th>
                                             </tr>
                                         </thead>
@@ -148,7 +148,7 @@ $UserList = $UserController->UserList($IDEmployee);
                                             <?php foreach ($UserList as $user) {   ?>
                                                 <tr>
                                                     <th scope="row"><?php echo $user->Usuario; ?></th>
-                                                    <th scope="row"><?php echo $user->Clave; ?></th>
+                                                    <!-- <th scope="row"><?php //echo $user->Clave; ?></th> -->
                                                     <th scope="col">
 
                                                         <button onclick="" type="button" class="btn btn-danger btnDeleteUser" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
