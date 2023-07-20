@@ -32,6 +32,12 @@ class OrderController
 
         return $this->OrderModel->OrderStateUpdate($idOrder, $State);
     }
+
+    function Dashboard()
+    {
+
+        return $this->OrderModel->Dashboard();
+    }
 }
 
 $Post = json_decode(file_get_contents("php://input"), true);
@@ -56,6 +62,11 @@ if (isset($Post['method'])) {
 
 
             print_r($OrderController->OrderStateUpdate($Post['idOrder'], $Post['State']));
+            break;
+        case 'Dashboard':
+
+
+            print_r(json_encode($OrderController->Dashboard()));
             break;
         default:
 

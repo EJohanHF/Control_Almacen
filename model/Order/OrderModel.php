@@ -25,7 +25,8 @@ class  OrderModel
         return $this->cn->BDList($query);
     }
 
-    function OrderStateUpdate ($idOrder , $State) {
+    function OrderStateUpdate($idOrder, $State)
+    {
         $query = "UPDATE orden SET ord_estado = $State WHERE ord_id = $idOrder";
 
         return $this->cn->BDUpdate($query);
@@ -81,6 +82,13 @@ class  OrderModel
         return $error;
     }
 
-
-
+    function Dashboard()
+    {
+        $query = 'SELECT COUNT(ord_id) AS "Total_Ventas" 
+        , (SELECT COUNT(ord_id) FROM orden WHERE ord_estado = 2 AND ord_fecha = DATE(NOW() )) AS "Total_Despachado"
+        ,(SELECT COUNT(ord_id) FROM orden WHERE ord_estado = 3 AND ord_fecha = DATE(NOW() )) AS "Total_Cancelado"
+        ,(SELECT SUM(ord_total) FROM orden WHERE ord_estado = 2 AND ord_fecha = DATE(NOW() )) AS "Total_Ventas_Despachado"
+        FROM orden WHERE ord_fecha = DATE(NOW())';
+        return $this->cn->BDList($query);
+    }
 }

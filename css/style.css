@@ -193,3 +193,56 @@ table {
 .local-cursor-pointer {
   cursor: pointer;
 }
+
+
+.ibox-tools {
+  display: block;
+  float: none;
+  margin-top: 0;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 0;
+  text-align: right;
+}
+
+.label-primary, .badge-primary {
+  background-color: #1ab394 !important;
+  color: #FFFFFF !important;
+}
+
+.label {
+  background-color: #D1DADE;
+  color: #5E5E5E;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  padding: 3px 8px;
+  text-shadow: none;
+  border-radius: 0.25em;
+  line-height: 1;
+  white-space: nowrap;
+  
+}
+
+.fs-10px {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.73rem;
+  
+}
+.widget {
+  border-radius: 5px;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.navy-bg, .bg-primary {
+  background-color: #1ab394 !important;
+  color: #ffffff;
+}
+
+
+.label-warning, .badge-warning {
+  background-color: #f8ac59  !important;
+  color: #FFFFFF !important;
+}

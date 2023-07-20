@@ -7,6 +7,7 @@ require dirname(__DIR__, 2) . "/Config/util.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/control_almacen/img/LogoEmpresa.png">
     <link rel="stylesheet" href="/control_almacen/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/control_almacen/fontAwesome/fontAwesome.css">
     <link rel="stylesheet" href="/control_almacen/fontAwesome/fontawesomesolid.css">
@@ -21,7 +22,8 @@ require dirname(__DIR__, 2) . "/Config/util.php";
     <script src="/control_almacen/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="/control_almacen/js/select.js"></script>
     <script src="/control_almacen/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    
+    <script src="/control_almacen/js/sparkiline.js"></script>
+
     <title>SI - UniCenter</title>
 
 </head>
@@ -96,7 +98,7 @@ require dirname(__DIR__, 2) . "/Config/util.php";
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link text-white">
+                                <a href="<?php echo config::PATH . "view/Dashboard/Dashboard.php" ?>" class="nav-link text-white">
                                     <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                                         <use xlink:href="#speedometer2"></use>
                                     </svg>
@@ -146,7 +148,7 @@ require dirname(__DIR__, 2) . "/Config/util.php";
 
 
 
-            
+
 
 
             <!-- 
